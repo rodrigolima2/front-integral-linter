@@ -4,11 +4,11 @@ import Header from "./components/Header";
 import MovieCard from "./components/MovieCard";
 import Bag from "./components/Bag";
 
-import defaultMovies from './data.js';
+import defaultMovies from "./data.js";
 
 import "./App.css";
 
-function App() {
+const App = function () {
     const [movies, setMovies] = useState(defaultMovies);
     const [moviesInBasket, setMoviesInBasket] = useState([]);
     const [basketFinalPrice, setBasketFinalPrice] = useState(0);
@@ -16,7 +16,7 @@ function App() {
 
     useEffect(() => {
         async function carregarFilmes() {
-            const resposta = await fetch('https://tmdb-proxy-workers.vhfmag.workers.dev/3/discover/movie?language=pt-BR');
+            const resposta = await fetch("https://tmdb-proxy-workers.vhfmag.workers.dev/3/discover/movie?language=pt-BR");
 
             const { results } = await resposta.json();
 
@@ -33,7 +33,7 @@ function App() {
             return movie;
         }
     }
-    
+
     function getDiscountedPrice(price) {
         return Number(price.toFixed(2));
     }
@@ -135,6 +135,6 @@ function App() {
             />
         </div>
     );
-}
+};
 
 export default App;
